@@ -93,7 +93,7 @@ class RcController:
 
     def run_threaded(self, img_arr=None):
         self.img_arr = img_arr
-        return self.inSteering, self.inThrottle, 'user', False
+        return self.inSteering, self.inThrottle, 'user', True
 
     def shutdown(self, img_arr=None):
         self.running = False
