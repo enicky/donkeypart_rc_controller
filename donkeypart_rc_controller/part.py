@@ -91,10 +91,11 @@ class RcController:
             if s > 0:
                 sleep(s)
 
-    def run_threaded(self):
+    def run_threaded(self, img_arr=None):
+        self.img_arr = img_arr
         return self.inSteering, self.inThrottle
 
-    def shutdown(self):
+    def shutdown(self, img_arr=None):
         self.running = False
         print("Stopping rc parsing thread")
         sleep(.5)
