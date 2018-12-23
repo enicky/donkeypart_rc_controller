@@ -9,11 +9,13 @@ class Arduino:
     arduino_device = None
     arduino_lock = threading.Lock()
 
-    def __init__(self, pwmPort, frequency=60):
+    def __init__(self, pwm_port, frequency=60):
         self.frequency = frequency
 
+        print("Using pwmPort : " + pwm_port)
+
         if Arduino.arduino_device is None:
-            Arduino.arduino_device = serial.Serial(pwmPort, 9600, timeout=0.01)
+            Arduino.arduino_device = serial.Serial(pwm_port, 9600, timeout=0.01)
         print("Arduino initialized")
 
     def readLine(self):
@@ -29,11 +31,11 @@ class Arduino:
 
 class RcController:
 
-    def __init__(self, hz=20):
+    def __init__(self, pwm_port, hz=20):
         self.inSteering = 0.0
         self.inThrottle = 0.0
 
-        self.sensor = Arduino(0)
+        self.sensor = Arduino(pwm_port, hz)
 
         self.num_channels = 2
         print("Initialized Serial Port")
