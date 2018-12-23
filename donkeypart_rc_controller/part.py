@@ -9,11 +9,11 @@ class Arduino:
     arduino_device = None
     arduino_lock = threading.Lock()
 
-    def __init__(self, channel, frequency=60):
+    def __init__(self, pwmPort, frequency=60):
         self.frequency = frequency
 
         if Arduino.arduino_device is None:
-            Arduino.arduino_device = serial.Serial('/dev/cu.usbserial-1410', 9600, timeout=0.01)
+            Arduino.arduino_device = serial.Serial(pwmPort, 9600, timeout=0.01)
         print("Arduino initialized")
 
     def readLine(self):
