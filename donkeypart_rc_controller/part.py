@@ -1,10 +1,6 @@
 import serial
 from time import sleep
-import sys
-import re
-#import datetime
 from datetime import datetime
-
 
 
 class Arduino:
@@ -29,7 +25,6 @@ class Arduino:
         if ret is not None:
             ret = ret.rstrip()
         return ret
-
 
 
 class RcController:
